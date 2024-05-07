@@ -1,4 +1,5 @@
 from enum import Enum
+from getpass import getpass
 import json
 import os
 import re
@@ -398,8 +399,11 @@ if __name__ == "__main__":
     api_key = os.getenv("OPENAI_API_KEY")
 
     if api_key is None:
-        api_key = input('OpenAI API key:')
-        dotenv_file = dotenv.find_dotenv()
-        dotenv.set_key(dotenv_file, 'OPENAI_API_KEY', api_key)
+        api_key = getpass('OpenAI API key:')
+        try:
+            dotenv_file = dotenv.find_dotenv()
+            dotenv.set_key(dotenv_file, 'OPENAI_API_KEY', api_key)
+        except:
+            pass
 
     run(api_key, sys.argv[1])
