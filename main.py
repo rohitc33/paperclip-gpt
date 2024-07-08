@@ -91,8 +91,6 @@ def create_message(role, content):
 
 
 class GameState:
-    data = {}
-    dynamic_ids = set()
     num_clips = 0
     num_actions = 0
     num_projects = 0
